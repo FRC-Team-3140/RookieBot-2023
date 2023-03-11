@@ -151,6 +151,7 @@ public class Robot extends TimedRobot {
      * as positive, arm in is negative.
      */
     arm.setInverted(true);
+    arm2.setInverted(true);
     //arm.setIdleMode(IdleMode.kBrake);
     //arm.setSmartCurrentLimit(ARM_CURRENT_LIMIT_A);
     intake.setInverted(false);
@@ -193,6 +194,7 @@ public class Robot extends TimedRobot {
    */
   public void setArmMotor(double percent) {
     arm.set(TalonSRXControlMode.PercentOutput,percent);
+    arm2.set(TalonSRXControlMode.PercentOutput,percent);
     
     SmartDashboard.putNumber("arm power (%)", percent);
     SmartDashboard.putNumber("arm motor current (amps)", arm.getStatorCurrent());
@@ -310,7 +312,7 @@ public class Robot extends TimedRobot {
       // do nothing and let it sit where it is
       armPower = 0.0;
     }
-    setArmMotor(armPower);
+    setArmMotor(0.75*j.getRawAxis(2));
 
     double intakePower;
     int intakeAmps;
@@ -340,6 +342,6 @@ public class Robot extends TimedRobot {
      * Negative signs here because the values from the analog sticks are backwards
      * from what we want. Forward returns a negative when we want it positive.
      */
-    setDriveMotors(-j.getRawAxis(1), -j.getRawAxis(2));
+    setDriveMotors(-j.getRawAxis(1), -j.getRawAxis(4));
   }
 }
