@@ -14,16 +14,16 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+// import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import edu.wpi.first.math.geometry.Pose2d;
 // import edu.wpi.first.math.geometry.Rotation2d;
 // import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 // import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+// import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class Drivetrain extends SubsystemBase {
+public class Drivetrain {
     public static CANSparkMax driveLeftSpark = new CANSparkMax(1, MotorType.kBrushed);
     public static CANSparkMax driveRightSpark = new CANSparkMax(2, MotorType.kBrushed);
     public static VictorSPX driveLeftVictor = new VictorSPX(3);
@@ -61,10 +61,15 @@ public class Drivetrain extends SubsystemBase {
 
         // see note above in robotInit about commenting these out one by one to set
         // directions.
-        driveLeftSpark.set(left);
-        driveLeftVictor.set(ControlMode.PercentOutput, left);
-        driveRightSpark.set(right);
-        driveRightVictor.set(ControlMode.PercentOutput, right);
+        // driveLeftSpark.set(left);
+        // driveLeftVictor.set(ControlMode.PercentOutput, left);
+        // driveRightSpark.set(right);
+        // driveRightVictor.set(ControlMode.PercentOutput, right);
+
+        driveLeftSpark.set(forward);
+        driveLeftVictor.set(ControlMode.PercentOutput, forward);
+        driveRightSpark.set(turn);
+        driveRightVictor.set(ControlMode.PercentOutput, turn);
   }
 
 
